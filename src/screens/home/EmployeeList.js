@@ -8,7 +8,7 @@ const employees = [
   { id: 3, name: "Alice Johnson", position: "UX Designer", department: "Design", salary: 65000 },
   { id: 4, name: "Bob Brown", position: "Quality Assurance", department: "Testing", salary: 60000 },
   { id: 5, name: "Charlie Black", position: "Backend Developer", department: "Development", salary: 75000 },
-  { id: 6, name: "Diana White", position: "Data Scientist", department: "Analytics", salary: 90000 },
+  { id: 6, name: "Diana White", position: "Software Engineer", department: "Analytics", salary: 90000 },
   { id: 7, name: "Eve Green", position: "Product Manager", department: "Product", salary: 95000 },
   { id: 8, name: "Frank Blue", position: "Frontend Developer", department: "Development", salary: 72000 },
   { id: 9, name: "Grace Red", position: "DevOps Engineer", department: "Infrastructure", salary: 78000 },
@@ -47,7 +47,7 @@ const EmployeeList = () => {
       {positions.map((position) => (
         <TouchableOpacity  key={position} style={styles.positionContainer}>
           <Text style={styles.positionTitle}>{position}</Text>
-           { position =='Project Manager' && groupedEmployees[position].map((employee) => {
+           {  groupedEmployees[position].map((employee) => {
              return(
                <>
                {

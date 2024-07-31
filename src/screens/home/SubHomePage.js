@@ -5,6 +5,7 @@ import { Colors } from '../../themes/Themes'
 import EmplList3 from './EmplList3'
 import EmployeeList from './EmployeeList'
 import EmployeeList2 from './EmployeeList2'
+import TextInputExamples from './TextInputExamples'
 
 const name = 'xyz'
 export default function SubHomePage() {
@@ -104,6 +105,7 @@ const concatenatedString = words.reduce((len, currentItem) =>  len + ' ' + curre
 
 // console.log(concatenatedString);
 
+// 
   return (
     <View style={styles.container}>
       {/* <View style={{ backgroundColor: Colors.white, height: 50, }}>
@@ -128,7 +130,8 @@ const concatenatedString = words.reduce((len, currentItem) =>  len + ' ' + curre
         })
       } */}
       {/* <EmployeeList/> */}
-      <EmplList3/>
+      {/* <EmplList3/> */}
+      <TextInputExamples/>
     </View>
   )
 }
