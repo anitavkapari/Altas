@@ -4,7 +4,9 @@ import { StyleSheet, Text, View } from 'react-native'
 export default function  Splash (props) {
   useEffect(()=>{
     setTimeout(()=>{
-      props.navigation.navigate('SubHomePage')
+      // props.navigation.navigate('SubHomePage')
+      props.navigation.navigate('Welcome')
+
     },500)
   },[])
   return (

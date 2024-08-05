@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Platform, Text, View, Image } from 'react-native';
+import { Platform, Text, View, Image, StatusBar } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { normalize } from '../utils/helpers/dimen';
@@ -9,16 +9,30 @@ import { Fonts } from '../themes/Fonts';
 import Welcome from '../screens/Welcome';
 import SubHomePage from  '../screens/home/SubHomePage'
 import { createStackNavigator } from '@react-navigation/stack';
+import CustomHeader from '../components/common/CustomHeader';
+import CustomHeader1 from '../components/common/CustomHeader1';
+import Profile from '../screens/profile/Profile';
 
 function HomeScreen() {
     const navigation = useNavigation()
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: Colors.white }}>
+         <StatusBar
+        animated={true}
+        backgroundColor="#f8f8f8"
+        // barStyle={statusBarStyle}
+        // showHideTransition={statusBarTransition}
+        // hidden={hidden}
+      />
             <Text style={{
                 height: 30, width: 100, backgroundColor: 'pink', textAlign: 'center',
             }}
                 onPress={() => {
-                    navigation.navigate('Welcome',)
+                    navigation.navigate('Root', {
+                        screen: 'Settings',
+                        initial: false,
+                      });
+                    // navigation.navigate('Welcome',)
                 }}
             >Home!</Text>
         </View>
@@ -26,10 +40,29 @@ function HomeScreen() {
 }
 
 function SettingsScreen() {
+    const navigation = useNavigation()
+
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: Colors.white }}>
-            <Text>Settings!</Text>
-        </View>
+ <StatusBar
+        animated={true}
+        backgroundColor="#f8f8f8"
+        // barStyle={statusBarStyle}
+        // showHideTransition={statusBarTransition}
+        // hidden={hidden}
+      />
+  <Text style={{
+                height: 30, width: 100, backgroundColor: 'pink', textAlign: 'center',
+            }}
+                onPress={() => {
+                    navigation.navigate('Home', {
+                        screen: 'SubHomePage',
+                        initial: false,
+                      });
+                    // navigation.navigate('Welcome',)
+                }}
+            >Settings!</Text>     
+               </View>
     );
 }
 
@@ -38,13 +71,13 @@ const HomeStack = createStackNavigator();
 const HomeStackScreen = () => {
     return (
         <HomeStack.Navigator
-            initialRouteName="Home"
+            initialRouteName="HomeScreen"
             screenOptions={{
                 gestureEnabled: false,
                 headerShown: false,
                 animation: 'slide_from_right',
             }}>
-            <HomeStack.Screen name="Home" component={HomeScreen} />
+            <HomeStack.Screen name="HomeScreen" component={HomeScreen} />
             {/* <HomeStack.Screen name="Welcome" component={Welcome} /> */}
             <HomeStack.Screen name="SubHomePage" component={SubHomePage} />
 
@@ -59,6 +92,13 @@ export default function BottomTabs() {
         <Tab.Navigator
             initialRouteName="Home"
             screenOptions={({ route }) => ({
+                                // headerShown: false,
+
+                header: () => {
+                    const title = route.name === 'Home' ? 'Home' : 'Settings';
+                    return route.name === 'Profile' ? null : <CustomHeader1/> 
+                    // <CustomHeader title={title} />;
+                  },
                 tabBarIcon: ({focused}) => {
                   let iconName;
       
@@ -103,7 +143,6 @@ export default function BottomTabs() {
                 showIcon: true,
                 // tabBarShowLabel: false,
 // 
-                headerShown: false,
                 tabBarStyle: {
                     position: 'absolute',
                     borderTopLeftRadius: normalize(20),
@@ -181,7 +220,7 @@ export default function BottomTabs() {
             //         }
                 }}
             />
-            <Tab.Screen name="Profile" component={SettingsScreen}
+            <Tab.Screen name="Profile" component={Profile}
                 options={{
                     unmountOnBlur: true,
             //         tabBarIcon: ({ focused }) => {

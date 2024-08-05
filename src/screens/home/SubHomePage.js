@@ -2,9 +2,11 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Colors } from '../../themes/Themes'
+import OtpExample from '../auth/OtpExample'
 import EmplList3 from './EmplList3'
 import EmployeeList from './EmployeeList'
 import EmployeeList2 from './EmployeeList2'
+// import ReduxExample from './ReduxExample'
 import TextInputExamples from './TextInputExamples'
 
 const name = 'xyz'
@@ -131,7 +133,10 @@ const concatenatedString = words.reduce((len, currentItem) =>  len + ' ' + curre
       } */}
       {/* <EmployeeList/> */}
       {/* <EmplList3/> */}
-      <TextInputExamples/>
+      {/* <TextInputExamples/> */}
+      {/* <ReduxExample/> */}
+
+      <OtpExample/>
     </View>
   )
 }
@@ -141,8 +146,10 @@ const concatenatedString = words.reduce((len, currentItem) =>  len + ' ' + curre
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    height: '100%',
+    width: '100%',
     backgroundColor: 'pink',
-    // justifyContent:'center',
+    justifyContent:'flex-end',
     // alignItems:'center'
   },
   textstyle: {

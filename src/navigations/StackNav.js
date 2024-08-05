@@ -9,6 +9,10 @@ import {
   import Welcome from '../screens/Welcome';
 import BottomTabs from './BottomTabs';
  import SubHomePage from '../screens/home/SubHomePage'
+ import Home from '../screens/home/Home'
+ import Profile from '../screens/profile/Profile'
+
+
   const StackNav = props => {
     const Stack = createStackNavigator();
      
@@ -22,7 +26,9 @@ import BottomTabs from './BottomTabs';
       Splash:Splash,
       Welcome:Welcome,
       BottomTabs:BottomTabs,
-      SubHomePage:SubHomePage
+      SubHomePage:SubHomePage,
+      Home:Home,
+      Profile:Profile
     }
       return (
         <NavigationContainer theme={mytheme}>
