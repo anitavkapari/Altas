@@ -3,6 +3,8 @@ import React, { useEffect } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Colors } from '../../themes/Themes'
 import OtpExample from '../auth/OtpExample'
+import DataFetcher from './DataFetcher'
+import Counter from './DataFetcher'
 import EmplList3 from './EmplList3'
 import EmployeeList from './EmployeeList'
 import EmployeeList2 from './EmployeeList2'
@@ -136,7 +138,9 @@ const concatenatedString = words.reduce((len, currentItem) =>  len + ' ' + curre
       {/* <TextInputExamples/> */}
       {/* <ReduxExample/> */}
 
-      <OtpExample/>
+      {/* <OtpExample/> */}
+      {/* <Counter/> */}
+      <DataFetcher/>
     </View>
   )
 }

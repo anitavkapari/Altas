@@ -18,13 +18,13 @@ export default function Profile(props) {
        fetch('https://jsonplaceholder.typicode.com/todos')
       .then(response => response.json())
       .then(data => {
-        setData(JSON.stringify(data));
+        setData(data);
         setLoading(false);
       })
       .catch(error => console.error('Error fetching data:', error));
       // setData(props.route.params.employee)
 
-      console.log('Hellooo...');
+      console.log('Hellooo...',data);
     },2000)
     setUserId(11)
     // fetch('https://jsonplaceholder.typicode.com/todos')
@@ -50,14 +50,14 @@ export default function Profile(props) {
 
   return (
     <View style={styles.container}>
-        {/* <View style={styles.header}> */}
-     {/* <Text
+        <View style={styles.header}>
+     <Text
           onPress={() => {
-            // navigation.goBack()
-            setUserId(3000)
+            navigation.goBack()
+            // setUserId(3000)
           }}
-        >{'Back'}{userId}</Text> */}
-     {/* </View> */}
+        >{'Back'}{userId}</Text>
+     </View>
       <FlatList
         data={data}
         keyExtractor={(item) => item?.id?.toString()}
@@ -68,11 +68,11 @@ export default function Profile(props) {
               fontFamily: Fonts.Inter_Bold,
             }]}>id: {item.id} </Text>
             <Text style={[styles.textTitle, {
-              fontFamily: Fonts.Inter_Medium,
-            }]}>Name: {item.name} </Text>
+              fontFamily: Fonts.Inter_Medium, textTransform:'capitalize',
+            }]}>Name: {item.title} </Text>
             <Text style={[styles.textTitle, {
-              fontFamily: Fonts.Inter_Regular,
-            }]}>department: {item.department} </Text>
+              fontFamily: Fonts.Inter_Regular
+            }]}>Status: {item.completed == false ? 'isNotActive' : 'isActive'} </Text>
           </View>
         )}
       />
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   },
   textTitle: {
     fontSize: normalize(15),
-    textTransform:'capitalize',
+    // textTransform:'capitalize',
     color: Colors.black
   },
   header:{

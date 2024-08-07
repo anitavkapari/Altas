@@ -13,6 +13,7 @@ import { normalize } from '../../utils/helpers/dimen';
 import { StatusBar } from 'react-native';
 import { Fonts } from '../../themes/Fonts';
 import { Colors } from '../../themes/Themes';
+import AnimatedToast from '../../components/common/AnimatedToast';
 
 
 
@@ -57,6 +58,14 @@ const OtpExample = props => {
     setThree('');
     setfour('');
   }
+  const [toastVisible, setToastVisible] = useState(false);
+
+  const showToast = () => {
+    setToastVisible(true);
+    setTimeout(() => {
+      setToastVisible(false);
+    }, 3000); // Same duration as the toast animation
+  };
 
   return (
     <View style={styles.mainContainer}>
@@ -221,9 +230,7 @@ const OtpExample = props => {
           </View>
           <TouchableOpacity
             onPress={() => {
-              // NavigationService.navigate('ChangePassword', {
-              //   email: email,
-              // });
+              showToast();
             }}
             style={{
               height: normalize(30), width: '100%',
@@ -240,6 +247,11 @@ const OtpExample = props => {
               </Text>
           </TouchableOpacity>
         </View>
+        <AnimatedToast
+        message="This is a custom animated toast!"
+        visible={toastVisible}
+        type={'SUCCESS'}
+      />
     </View>
   );
 };

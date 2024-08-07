@@ -55,10 +55,7 @@ function SettingsScreen() {
                 height: 30, width: 100, backgroundColor: 'pink', textAlign: 'center',
             }}
                 onPress={() => {
-                    navigation.navigate('Home', {
-                        screen: 'SubHomePage',
-                        initial: false,
-                      });
+                    navigation.navigate('SubHomePage');
                     // navigation.navigate('Welcome',)
                 }}
             >Settings!</Text>     
